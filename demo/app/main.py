@@ -45,7 +45,7 @@ class SentimentRequest(BaseModel):
 async def read_root():
     return {"Hello": "World"}
 
-@app.post("/predict-sentiment")
+@app.get("/predict-sentiment")
 async def predict(request: SentimentRequest):
     prediction = predict_sentiment(request.text)
     return {"prediction": prediction[0], "polarity": prediction[1]}

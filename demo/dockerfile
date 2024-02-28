@@ -1,11 +1,11 @@
 # Use the official Python image from the Docker Hub
-FROM python:3.9
+FROM python:3.10
 
 # Set the working directory in the container
 WORKDIR /code
 
-# Copy the dependencies file to the working directory
-COPY ./requirements.txt
+# Copy the requirements /dependency file to the working directory
+COPY ./requirements.txt /code/requirements.txt
 
 # Install any dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -15,3 +15,17 @@ COPY ./app /code/app
 
 # Command to run the application
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+
+
+
+#######
+#
+# 
+#
+# To build: 
+# docker build --tag <container_name>
+# 
+# To run
+# docker run --detach --name <name> --publish 80:80 <container_name>
+#
+#######
